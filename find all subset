@@ -1,0 +1,21 @@
+#include<vector>
+void solve(vector<vector<int>> &ans,vector<int> &arr ,int n,vector<int> &v)
+{
+    if(n>=arr.size())
+    {
+        ans.push_back(v);
+        return ;
+    }
+    //exclude
+    solve(ans,arr,n+1,v);
+    // inclusize
+    v.push_back(arr[n]);
+    solve(ans,arr,n+1,v);
+    v.pop_back();
+}
+vector<vector<int>> FindAllSubsets(int n, vector<int> &arr){
+   vector<vector<int>> ans;
+   vector<int> v;
+   solve(ans,arr,0,v);
+   return ans;
+}
